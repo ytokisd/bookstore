@@ -1,0 +1,34 @@
+
+h1 Welcome to a home page Home
+
+div id='latest-books'
+  #myCarousel.carousel.slide[data-ride="carousel"]
+    .carousel-inner
+      - @new_books.each_with_index do |book, index|
+        div class=("item #{'active' if index == 0}")
+          = image_tag(book.image.url)
+          li
+            = book.name + "\n"
+          li
+            = book.description
+          li
+            p
+              = button_to :controller => :home, :action => :index do
+                | Buy Now!
+          - book.authors.each do |author|
+            li
+              = author.last_name
+    a.left.carousel-control[href="#myCarousel" data-slide="prev"]
+      span.glyphicon.glyphicon-chevron-left
+      span.sr-only
+        | Previous
+    a.right.carousel-control[href="#myCarousel" data-slide="next"]
+      span.glyphicon.glyphicon-chevron-right
+      span.sr-only
+        | Next
+
+div id='get-started'
+  p
+    | Welcome to our amazing Bookstore! We pore through hundreds of new books each month and select the five best to share with our members
+    = button_to :controller => :home, :action => :index do
+      | Get Started
