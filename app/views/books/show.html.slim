@@ -1,0 +1,13 @@
+p show controller
+= image_tag(@book.image.url)
+li
+  = @book.name + "\n"
+li
+  = @book.description
+li
+  p
+    = button_to book_path(@book.id), method: :get do
+      | Add to Cart
+- @book.authors.each do |author|
+  li
+    = author.last_name

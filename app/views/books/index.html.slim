@@ -1,0 +1,17 @@
+p Books Index
+= form_tag books_path, method: :get
+ = collection_select( nil, :category_id, Category.all, :id, :name, { :include_blank => 'All Categories'} , { :class => 'form-control' })
+ = submit_tag nil, class: "form_submit"
+- @books.each_with_index do |book, index|
+    = image_tag(book.image.url)
+    li
+      = book.name + "\n"
+    li
+      = book.description
+    li
+      p
+        = button_to book_path(book.id), method: :get do
+          | Buy Now!
+    - book.authors.each do |author|
+      li
+        = author.last_name
