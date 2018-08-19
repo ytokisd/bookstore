@@ -6,7 +6,8 @@ class BooksController < ApplicationController
       @category_id = Category.find_by(id: params[:category_id])
       @books = @category_id.books
     end
-    @categories = Category
+    @categories = Category.all
+    @books_orders = current_order.books_orders.new
   end
 
   def show

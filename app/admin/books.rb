@@ -1,5 +1,5 @@
 ActiveAdmin.register Book do
-  permit_params :name, :description, :image, :categories_ids, :authors_ids, books_categories_attributes: [:id, :book_id, :category_id, :_destroy], authors_books_attributes: [:id, :author_id, :book_id, :_destroy]
+  permit_params :name, :price, :description, :image, :categories_ids, :authors_ids, books_categories_attributes: [:id, :book_id, :category_id, :_destroy], authors_books_attributes: [:id, :author_id, :book_id, :_destroy]
 
   index do
     selectable_column
@@ -12,6 +12,7 @@ ActiveAdmin.register Book do
     column :authors do |book|
       book.authors.map {|ba| ba.last_name + ", " + ba.first_name}.join(", ").html_safe
     end
+    column :price
     actions
   end
 
@@ -26,6 +27,7 @@ ActiveAdmin.register Book do
       row :authors do |book|
         book.authors.map {|ba| ba.last_name +  ", " + ba.first_name}.join(", ").html_safe
       end
+      row :price
     end
   end
 
@@ -43,6 +45,7 @@ ActiveAdmin.register Book do
       has_many :authors_books, allow_destroy: true do |n_a|
         n_a.input :author, :collection => Author.all.map {|author| [author.last_name, author.id]}
       end
+      f.input :price
     end
     f.actions
   end

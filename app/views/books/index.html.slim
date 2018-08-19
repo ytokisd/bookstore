@@ -11,7 +11,14 @@ p Books Index
     li
       p
         = button_to book_path(book.id), method: :get do
-          | Buy Now!
+          | See Details
     - book.authors.each do |author|
       li
         = author.last_name
+    li
+      = book.price
+    li
+      = form_for @books_orders do |f|
+        = f.hidden_field :book_id, value: book.id
+        = f.number_field :quantity
+        = f.submit "Add to cart"

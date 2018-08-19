@@ -18,6 +18,8 @@ div id='latest-books'
           - book.authors.each do |author|
             li
               = author.last_name
+            li
+              = book.price
     a.left.carousel-control[href="#myCarousel" data-slide="prev"]
       span.glyphicon.glyphicon-chevron-left
       span.sr-only
