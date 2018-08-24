@@ -1,4 +1,5 @@
 - if @order_items.any?
+  = button_to "Create order", attach_user_cart_path, :method => :put
   - @order_items.each do |item|
     p
       = item.book.name

@@ -1,0 +1,6 @@
+p My Orders:
+- @orders.each do |order|
+  li
+    = order.id
+    = order.aasm_state
+    = link_to "Details", order_path(order)

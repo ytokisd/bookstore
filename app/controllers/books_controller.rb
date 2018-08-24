@@ -7,6 +7,7 @@ class BooksController < ApplicationController
       @books = @category_id.books
     end
     @categories = Category.all
+
     @books_orders = current_order.books_orders.new
   end
 

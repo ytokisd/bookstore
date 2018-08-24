@@ -16,9 +16,14 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :books_orders, :allow_destroy => true
 
   aasm do
-    state :created, initial: true
+    state :in_progress, initial: true
+    state :created
     state :shipped
     state :recieved
+
+    event :create do
+      transitions from: [:in_progress], to: :created
+    end
 
     event :ship do
       transitions from: [:created], to: :shipped
@@ -29,6 +34,8 @@ class Order < ApplicationRecord
     end
 
   end
+
+
 
   private
 

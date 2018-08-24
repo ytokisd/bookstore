@@ -2,14 +2,10 @@ h1
   | Jack Store
 ul
   li
-    = link_to :controller => :home, :action => :index do
-      | Home
+    = link_to "Home", root_path
   li
-    = link_to :controller => :home, :action => :index do
-      | Shop
+    = link_to "Shop", root_path
   li
-    = link_to :controller => :home, :action => :index do
-      | My Account
+    = link_to "My Account", root_path
   li
-    = link_to :controller => :carts, :action => :show do
-      | Cart
+    = link_to "Cart", cart_path
