@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_19_093217) do
+ActiveRecord::Schema.define(version: 2018_08_29_081141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,12 +84,18 @@ ActiveRecord::Schema.define(version: 2018_08_19_093217) do
     t.string "name"
   end
 
+  create_table "coupons", force: :cascade do |t|
+    t.integer "code"
+    t.boolean "active", default: true
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "order_number"
     t.integer "user_id"
     t.decimal "summary"
     t.string "billing_address"
     t.string "aasm_state"
+    t.integer "coupon_id"
   end
 
   create_table "reviews", force: :cascade do |t|

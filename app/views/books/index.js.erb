@@ -1,0 +1,7 @@
+$("#js-books-list").append("<%= j(render(partial: "books")) %>");
+
+<% if @books_array.last_page? %>
+  $("#js-view-more").hide();
+<% else %>
+  $("#js-view-more").attr("href", "<%= books_path(page: (@books_array.current_page+1)) %>");
+<% end %>

@@ -1,5 +1,5 @@
 ActiveAdmin.register BooksOrder do
-  permit_params :book_id, :order_id
+  permit_params :book_id, :order_id, :quantity
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #

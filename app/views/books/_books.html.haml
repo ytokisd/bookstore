@@ -1,0 +1,20 @@
+#js-books-list
+  - @books_array.each do |book|
+    .col-xs-6.col-sm-3
+      .general-thumb-wrap
+        .thumbnail.general-thumbnail
+          %img.img-shadow.general-thumbnail-img{src: "#{image_url(book.image.url)}", alt: "design-book"}
+          .thumb-hover
+            .general-thumb-link-wrap
+              %a.thumb-hover-link{href: book_path(book.id)}
+                %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
+              =link_to books_orders_path(:book_id => book.id, :order_id => @order.id), method: :POST do
+                %i.fa.fa-shopping-cart.thumb-icon
+
+      .general-thumb-info
+        %p.title #{book.name}
+        %p.font-16.in-gold-500 €#{book.price}
+        %span.divider-sm
+        - book.authors.each do |author|
+          %p.lead.small #{author.first_name.to_s + " " + author.last_name.to_s + " "}
+  .text-center

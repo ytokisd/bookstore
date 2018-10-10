@@ -1,6 +1,16 @@
 p order page
-
-- @order_books.each do |book|
-  li
-    = book.name
-    = book.price
+- if @order.coupon_id == nil
+    = render "coupons/search_code"
+    - @order_books.each do |item|
+      li
+        = item.quantity
+        = item.book.name
+        = item.book.price * item.quantity
+- else
+    p "Coupon was activated"
+    = render "coupons/search_code"
+    - @order_books.each do |item|
+      li
+        = item.quantity
+        = item.book.name
+        = item.book.price * item.quantity

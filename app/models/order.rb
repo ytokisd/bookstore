@@ -2,6 +2,7 @@ class Order < ApplicationRecord
   include AASM
 
   has_one :user
+  has_one :coupon
 
   has_many :books_orders
   has_many :books, through: :books_orders

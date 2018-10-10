@@ -30,6 +30,9 @@ gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'carrierwave'
 gem 'aasm'
+gem "haml-rails", "~> 1.0"
+gem 'kaminari'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

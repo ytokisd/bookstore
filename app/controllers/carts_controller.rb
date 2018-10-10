@@ -7,5 +7,7 @@ class CartsController < ApplicationController
   def attach_user
     @order = current_order
     @order.update_attributes(:user_id => current_user.id)
+    redirect_to order_path(@order)
   end
+
 end

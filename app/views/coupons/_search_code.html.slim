@@ -1,0 +1,3 @@
+= form_tag(coupons_path, method: :get) do
+  = text_field_tag :code, params[:code]
+  = submit_tag 'Search', name: nil

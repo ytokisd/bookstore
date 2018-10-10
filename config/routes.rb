@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :books do
+    put 'add_to_cart' => 'books#add_to_cart', as: 'add_to_cart'
+  end
+
+  resources :home do
+    get :best_book, :on => :collection
   end
 
   resources :authors do
@@ -16,11 +21,12 @@ Rails.application.routes.draw do
   resources :reviews do
   end
 
-  resources :books_orders do
+  resources :books_orders, :only => [:create, :destroy] do
   end
 
-  resources :orders do
-  end
+  resources :coupons
+
+  resources :orders
 
   devise_scope :user do
     get '/sign-in' => "devise/sessions#new", :as => :login
